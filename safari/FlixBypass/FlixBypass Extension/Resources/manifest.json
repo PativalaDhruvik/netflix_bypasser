@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "FlixBypass",
+    "version": "1.0",
+    "description": "Blocks Netflix household verification.",
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "*://*.netflix.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.netflix.com/*"
+            ],
+            "js": [
+                "inject_early.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": false
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "browser_specific_settings": {
+        "safari": {
+            "strict_min_version": "15.4"
+        }
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+
+        body {
+            font-family: -apple-system, sans-serif;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1em;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: 0 0 0.5em;
+        }
+
+        p {
+            color: #888;
+            margin: 0.5em 0;
+        }
+
+        .enabled {
+            color: #32D74B;
+            font-weight: 600;
+        }
+
+        .disabled {
+            color: #FF453A;
+            font-weight: 600;
+        }
+
+        button {
+            margin-top: 1em;
+            padding: 0.75em 2em;
+            font-size: 1em;
+            border-radius: 8px;
+            border: none;
+            background: #E50914;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="icon" src="Icon.png" alt="FlixBypass">
+    <h1>FlixBypass</h1>
+    <p>Netflix Household Bypass</p>
+    <div>
+        <p id="state-text"></p>
+        <button id="open-prefs" style="display:none"
+            onclick="webkit.messageHandlers.controller.postMessage('open-preferences')">Open Safari Settings</button>
+    </div>
+    <script>
+        function show(enabled, useSettings) {
+            var s = document.getElementById('state-text'), b = document.getElementById('open-prefs');
+            if (enabled) { s.innerHTML = '<span class="enabled">✓ Extension is enabled</span>'; }
+            else { s.innerHTML = '<span class="disabled">✗ Extension is disabled</span>'; b.style.display = 'inline-block'; b.textContent = 'Open Safari ' + (useSettings ? 'Settings' : 'Preferences'); }
+        }
+    </script>
+</body>
+
+</html>
